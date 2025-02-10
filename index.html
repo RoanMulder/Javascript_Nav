@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        
+        const jsonData = '[{"title": "home","url" : "/"},{"title" : "producten","url" : "/producten/"},{"title": "Over ons","url" : "/overons/"},{"title": "contact","url" : "/contact/"}]';
+
+        // Converteer JSON-string naar een JavaScript-object
+        const menuItems = JSON.parse(jsonData);
+
+        // Maak het <ul> element aan
+        const ul = document.createElement('ul');
+
+        // Loop door de menu-items en maak <li> elementen aan
+        menuItems.forEach(item => {
+            const li = document.createElement('li');
+            const a = document.createElement('a');
+            a.href = item.url; // Stel de link in
+            a.textContent = item.title; // Stel de tekst van de link in
+            li.appendChild(a); // Voeg de link toe aan de lijstitem
+            ul.appendChild(li); // Voeg het lijstitem toe aan de <ul>
+        });
+
+        // Voeg het menu toe aan de body of een specifiek element
+        // Vervang 'menu-container' met de id van je doelcontainer
+        const menuContainer = document.getElementById('menu-container') || document.body;
+        menuContainer.appendChild(ul);
+
+    </script>
+</body>
+</html>
